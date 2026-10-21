@@ -32,16 +32,16 @@ export const site = {
 
   // Dirección (se usa también para el enlace de Google Maps)
   address: {
-    street: "Republica Mexicana",
-    neighborhood: "Puentes",
+    street: "República Mexicana 345",
+    neighborhood: "Paseo de las Puentes",
     city: "San Nicolas de los Garza",
-    country: "México",
-    zip: "06000",
+    country: "Nuevo Leon",
+    zip: "66465",
   },
 
   social: {
-    instagram: "https://instagram.com/",
-    facebook: "https://facebook.com/",
+    instagram: "https://www.instagram.com/imperial.barberiamx?obrf=MTI4MDNzZHY2dXYybQ==",
+    facebook: "https://www.facebook.com/profile.php?id=61555627677804&mibextid=wwXIfr&mibextid=wwXIfr",
   },
 
   rating: { value: "4.9", count: 320 },
@@ -68,54 +68,54 @@ export const nav: NavItem[] = [
 export const services: Service[] = [
   {
     name: "Corte Clásico",
-    price: "$25",
+    price: "$200",
     duration: "45 min",
     description: "Tijera y máquina, lavado y peinado con cera de acabado mate.",
   },
   {
     name: "Afeitado a Toalla Caliente",
-    price: "$22",
+    price: "$220",
     duration: "40 min",
     description: "Navaja recta, aceite pre-shave y bálsamo calmante.",
   },
   {
     name: "Arreglo de Barba",
-    price: "$18",
+    price: "$200",
     duration: "30 min",
     description: "Perfilado a navaja, recorte de precisión y aceite para barba.",
   },
   {
     name: "Combo Completo",
-    price: "$40",
+    price: "$400",
     duration: "75 min",
     description: "Corte, afeitado y barba. La experiencia completa de barbería.",
     featured: true,
   },
   {
     name: "Corte Infantil",
-    price: "$18",
+    price: "$150",
     duration: "30 min",
     description: "Paciencia, tijera y buen humor para los más pequeños.",
   },
   {
     name: "Camuflaje de Canas",
-    price: "$30",
+    price: "$300",
     duration: "60 min",
     description: "Tono natural sin amoníaco para un acabado discreto.",
   },
 ];
 
 export const openingHours = [
-  { days: "Martes – Viernes", hours: "10:00 – 20:00" },
+  { days: "Lunes – Viernes", hours: "10:00 – 20:00" },
   { days: "Sábado", hours: "09:00 – 18:00" },
-  { days: "Domingo – Lunes", hours: "Cerrado" },
+  { days: "Domingo", hours: "Cerrado" },
 ] as const;
 
 export const highlights = [
   {
     icon: "scissors" as const,
     title: "Barberos experimentados",
-    text: "Más de 25 años combinando técnica clásica y tendencia actual.",
+    text: "Más de 10 años combinando técnica clásica y tendencia actual.",
   },
   {
     icon: "bottle" as const,
