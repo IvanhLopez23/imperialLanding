@@ -1,0 +1,32 @@
+---
+/**
+ * Icono SVG accesible: siempre decorativo (aria-hidden) porque acompaña
+ * a un texto o a un aria-label en el elemento padre.
+ */
+import { icons, type IconName } from "../lib/icons";
+
+interface Props {
+  name: IconName;
+  class?: string;
+  /** Solo aplica a iconos de trazo. */
+  strokeWidth?: number;
+}
+
+const { name, class: className = "h-5 w-5", strokeWidth = 1.6 } = Astro.props;
+const icon = icons[name];
+const isFilled = icon.filled ?? false;
+---
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 24 24"
+  class={className}
+  fill={isFilled ? "currentColor" : "none"}
+  stroke={isFilled ? "none" : "currentColor"}
+  stroke-width={isFilled ? undefined : strokeWidth}
+  stroke-linecap={isFilled ? undefined : "round"}
+  stroke-linejoin={isFilled ? undefined : "round"}
+  aria-hidden="true"
+  focusable="false"
+  set:html={icon.body}
+/>

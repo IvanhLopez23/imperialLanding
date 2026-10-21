@@ -1,0 +1,88 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import heroImage from "../assets/hero.jpg";
+import { site } from "../data/site";
+---
+
+<!--
+  Hero a pantalla completa.
+  - Imagen optimizada con astro:assets (variantes responsive + WebP).
+  - Overlay oscuro en dos capas para garantizar contraste AA sobre la foto.
+-->
+<section id="inicio" class="relative isolate flex min-h-[100svh] items-end overflow-hidden">
+  <!-- Fondo -->
+  <Image
+    src={heroImage}
+    alt="Barbero de Barbería Imperial perfilando la barba de un cliente con tijera"
+    widths={[640, 960, 1280, 1600, 2000]}
+    sizes="100vw"
+    loading="eager"
+    fetchpriority="high"
+    decoding="async"
+    quality={82}
+    class="absolute inset-0 -z-20 h-full w-full object-cover object-[58%_center] sm:object-center"
+  />
+
+  <!-- Overlays: lateral + inferior + viñeta -->
+  <div
+    class="absolute inset-0 -z-10 bg-gradient-to-r from-charcoal via-charcoal/90 to-charcoal/35 sm:via-charcoal/80 sm:to-charcoal/20"
+    aria-hidden="true"
+  >
+  </div>
+  <div
+    class="absolute inset-0 -z-10 bg-gradient-to-t from-charcoal via-charcoal/20 to-charcoal/50"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="mx-auto w-full max-w-6xl px-4 pt-32 pb-16 sm:px-6 sm:pb-20 lg:px-8 lg:pb-24">
+    <div class="max-w-2xl">
+      <!-- Eyebrow -->
+      <p class="flex items-center gap-3 text-[11px] font-medium tracking-[0.3em] text-gold uppercase">
+        <span class="h-px w-10 bg-gold/70" aria-hidden="true"></span>
+        {site.tagline}
+      </p>
+
+      <h1 class="mt-6 font-serif text-[2.5rem] leading-[1.08] text-ivory sm:text-6xl lg:text-[4.25rem]">
+        El arte del corte clásico y el <em class="text-gold italic">afeitado tradicional</em>
+      </h1>
+
+      <p class="mt-6 max-w-xl text-base leading-relaxed text-ivory-dim sm:text-lg">
+        Navaja, toalla caliente y tiempo para ti. Sin prisas, sin ruido: solo oficio.
+      </p>
+
+      <!-- CTAs -->
+      <div class="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+        <a href="#reservar" class="btn btn-primary w-full sm:w-auto">
+          Reservar cita
+          <Icon name="arrow-right" class="h-4 w-4" />
+        </a>
+        <a href="#servicios" class="btn btn-outline w-full sm:w-auto">Ver servicios</a>
+      </div>
+
+      <!-- Prueba social -->
+      <div class="mt-12 flex flex-wrap items-center gap-x-8 gap-y-4 border-t border-ivory/15 pt-6">
+        <div class="flex items-center gap-2">
+          <div class="flex gap-0.5 text-gold" aria-hidden="true">
+            {Array.from({ length: 5 }).map(() => <Icon name="star" class="h-3.5 w-3.5" />)}
+          </div>
+          <p class="text-sm text-ivory-dim">
+            <span class="font-medium text-ivory">{site.rating.value}</span>
+            · {site.rating.count} reseñas
+          </p>
+        </div>
+
+        <div class="hidden h-8 w-px bg-ivory/15 sm:block" aria-hidden="true"></div>
+
+        <p class="text-sm text-ivory-dim">
+          <span class="font-medium text-ivory">{site.years} años</span> de oficio
+        </p>
+
+        <div class="hidden h-8 w-px bg-ivory/15 sm:block" aria-hidden="true"></div>
+
+        <p class="text-sm text-ivory-dim">Walk-ins bienvenidos</p>
+      </div>
+    </div>
+  </div>
+</section>

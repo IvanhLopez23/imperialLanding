@@ -1,0 +1,107 @@
+---
+import Icon from "./Icon.astro";
+import { services, whatsappUrl } from "../data/site";
+---
+
+<!--
+  Servicios: grid de 6 tarjetas (máx. recomendado para escaneo rápido).
+  Cada tarjeta muestra nombre, precio, duración y una descripción de una línea.
+  El enlace "Reservar" precarga el servicio en el formulario (ver Contact.astro).
+-->
+<section id="servicios" class="bg-ivory py-20 text-charcoal sm:py-24 lg:py-32">
+  <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+    <div class="flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
+      <div class="max-w-2xl">
+        <p class="section-label text-gold-ink">Servicios</p>
+        <h2 class="section-title mt-4 text-leather">Precisión en cada detalle</h2>
+        <p class="mt-5 max-w-xl text-base leading-relaxed text-charcoal/70">
+          Una carta corta y bien ejecutada. Elige tu servicio y reserva en menos de un minuto.
+        </p>
+      </div>
+
+      <p class="text-sm text-charcoal/60">Precios en MXN · IVA incluido</p>
+    </div>
+
+    <ul class="mt-12 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        services.map((service) => (
+          <li class="reveal h-full">
+            <article
+              class:list={[
+                "group relative flex h-full flex-col rounded-2xl border p-6 transition-all duration-300 ease-out sm:p-7",
+                service.featured
+                  ? "border-gold/60 bg-leather text-ivory shadow-[0_24px_50px_-30px_rgba(43,30,26,0.8)] hover:-translate-y-1 hover:border-gold"
+                  : "border-charcoal/10 bg-white text-leather hover:-translate-y-1 hover:border-gold/60 hover:shadow-[0_24px_44px_-28px_rgba(43,30,26,0.45)]",
+              ]}
+            >
+              {service.featured && (
+                <span class="absolute -top-3 right-6 rounded-full bg-gold px-3 py-1 text-[10px] font-semibold tracking-[0.14em] text-charcoal uppercase">
+                  Más elegido
+                </span>
+              )}
+
+              <div class="flex items-start justify-between gap-4">
+                <h3 class="font-serif text-xl leading-snug sm:text-[1.4rem]">{service.name}</h3>
+                <p
+                  class:list={[
+                    "shrink-0 font-serif text-xl",
+                    service.featured ? "text-gold" : "text-gold-ink",
+                  ]}
+                >
+                  {service.price}
+                </p>
+              </div>
+
+              <p
+                class:list={[
+                  "mt-3 text-sm leading-relaxed",
+                  service.featured ? "text-ivory/75" : "text-charcoal/70",
+                ]}
+              >
+                {service.description}
+              </p>
+
+              <div
+                class:list={[
+                  "mt-6 flex items-center justify-between gap-3 border-t pt-5 text-xs tracking-wide uppercase",
+                  service.featured ? "border-ivory/15 text-ivory/60" : "border-charcoal/10 text-charcoal/60",
+                ]}
+              >
+                <span class="inline-flex items-center gap-1.5">
+                  <Icon name="clock" class="h-4 w-4" />
+                  {service.duration}
+                </span>
+
+                <a
+                  href="#reservar"
+                  data-service={service.name}
+                  aria-label={`Reservar ${service.name}`}
+                  class:list={[
+                    "inline-flex cursor-pointer items-center gap-1.5 text-[11px] font-medium tracking-[0.14em] uppercase transition-all duration-200 hover:gap-2.5",
+                    service.featured ? "text-gold" : "text-gold-ink",
+                  ]}
+                >
+                  Reservar
+                  <Icon name="arrow-right" class="h-3.5 w-3.5" />
+                </a>
+              </div>
+            </article>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="mt-10 text-sm text-charcoal/70">
+      ¿No sabes qué elegir?{" "}
+      <a
+        href={whatsappUrl("Hola, tengo una duda sobre los servicios de Barbería Imperial.")}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="font-medium text-gold-ink underline decoration-gold/50 underline-offset-4 transition-colors hover:decoration-gold-ink"
+      >
+        Escríbenos por WhatsApp
+      </a>
+      y te ayudamos.
+    </p>
+  </div>
+</section>

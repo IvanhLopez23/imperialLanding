@@ -1,0 +1,83 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { site } from "../data/site";
+---
+
+<Layout
+  title={`Política de privacidad — ${site.name}`}
+  description="Cómo tratamos los datos que nos compartes al reservar una cita en Barbería Imperial."
+>
+  <Header />
+
+  <main id="contenido" class="mx-auto max-w-3xl px-4 pt-32 pb-20 sm:px-6 lg:px-8">
+    <p class="section-label">Legal</p>
+    <h1 class="section-title mt-4">Política de privacidad</h1>
+    <p class="mt-4 text-sm text-muted">Última actualización: enero de 2026</p>
+
+    <div class="mt-10 space-y-8 text-sm leading-relaxed text-ivory-dim">
+      <section>
+        <h2 class="font-serif text-xl text-ivory">1. Responsable</h2>
+        <p class="mt-2">
+          {site.name}, con domicilio en {site.address.street}, {site.address.neighborhood},{" "}
+          {site.address.city}, es responsable del tratamiento de los datos personales que nos
+          proporcionas a través de este sitio.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-serif text-xl text-ivory">2. Datos que recopilamos</h2>
+        <p class="mt-2">
+          Únicamente los datos que escribes en el formulario de reserva: nombre, teléfono, servicio de
+          interés y fecha deseada. No utilizamos cookies de seguimiento ni publicidad.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-serif text-xl text-ivory">3. Finalidad</h2>
+        <p class="mt-2">
+          Usamos tus datos exclusivamente para contactarte, confirmar la cita y gestionar el servicio.
+          Al enviar el formulario se abre WhatsApp, por lo que el mensaje se rige también por la
+          política de privacidad de esa plataforma.
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-serif text-xl text-ivory">4. Conservación y derechos</h2>
+        <p class="mt-2">
+          Conservamos los datos de contacto solo mientras sean necesarios para la relación comercial.
+          Puedes solicitar su eliminación o ejercer tus derechos de acceso, rectificación y
+          cancelación escribiendo a{" "}
+          <a
+            href={`mailto:${site.email}`}
+            class="font-medium text-gold underline decoration-gold/40 underline-offset-4 transition-colors hover:decoration-gold"
+          >
+            {site.email}
+          </a>
+          .
+        </p>
+      </section>
+
+      <section>
+        <h2 class="font-serif text-xl text-ivory">5. Contacto</h2>
+        <p class="mt-2">
+          Cualquier duda sobre esta política puede dirigirse al teléfono{" "}
+          <a href={`tel:${site.phone}`} class="text-gold transition-colors hover:text-gold-soft">
+            {site.phoneDisplay}
+          </a>
+          .
+        </p>
+      </section>
+    </div>
+
+    <a
+      href="/"
+      class="mt-12 inline-flex items-center gap-2 text-sm text-gold transition-colors hover:text-gold-soft"
+    >
+      <span aria-hidden="true">←</span> Volver al inicio
+    </a>
+  </main>
+
+  <Footer />
+</Layout>

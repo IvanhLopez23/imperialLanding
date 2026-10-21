@@ -1,0 +1,126 @@
+---
+import Icon from "./Icon.astro";
+import { nav, site, whatsappUrl } from "../data/site";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-line/70 bg-charcoal">
+  <div class="mx-auto max-w-6xl px-4 py-14 sm:px-6 lg:px-8">
+    <div class="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr] md:gap-12">
+      <!-- Marca -->
+      <div>
+        <a href="#inicio" class="group inline-flex flex-col leading-none" aria-label={`${site.name} — Inicio`}>
+          <span
+            class="font-serif text-xl font-semibold tracking-[0.32em] text-ivory transition-colors duration-200 group-hover:text-gold"
+          >
+            IMPERIAL
+          </span>
+          <span class="mt-1.5 text-[9px] font-medium tracking-[0.42em] text-gold/90 uppercase">
+            Barber Club
+          </span>
+        </a>
+
+        <p class="mt-5 max-w-xs text-sm leading-relaxed text-muted">
+          Corte clásico, navaja y toalla caliente. Un oficio de tres generaciones en el centro de la
+          ciudad.
+        </p>
+
+        <div class="mt-6 flex items-center gap-3">
+          <a
+            href={site.social.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-ivory/15 text-ivory/80 transition-colors duration-200 hover:border-gold hover:text-gold"
+            aria-label="Instagram de Barbería Imperial"
+          >
+            <Icon name="instagram" class="h-4 w-4" />
+          </a>
+          <a
+            href={site.social.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-ivory/15 text-ivory/80 transition-colors duration-200 hover:border-gold hover:text-gold"
+            aria-label="Facebook de Barbería Imperial"
+          >
+            <Icon name="facebook" class="h-4 w-4" />
+          </a>
+          <a
+            href={whatsappUrl()}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex h-10 w-10 cursor-pointer items-center justify-center rounded-full border border-ivory/15 text-ivory/80 transition-colors duration-200 hover:border-gold hover:text-gold"
+            aria-label="WhatsApp de Barbería Imperial"
+          >
+            <Icon name="whatsapp" class="h-4 w-4" />
+          </a>
+        </div>
+      </div>
+
+      <!-- Navegación -->
+      <nav aria-label="Enlaces del pie de página">
+        <h2 class="text-[11px] font-medium tracking-[0.24em] text-gold uppercase">Explorar</h2>
+        <ul class="mt-5 space-y-3">
+          {
+            nav.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class="text-sm text-ivory-dim transition-colors duration-200 hover:text-gold"
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+          }
+          <li>
+            <a
+              href="#reservar"
+              class="text-sm text-ivory-dim transition-colors duration-200 hover:text-gold"
+            >
+              Reservar cita
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Contacto -->
+      <div>
+        <h2 class="text-[11px] font-medium tracking-[0.24em] text-gold uppercase">Encuéntranos</h2>
+        <address class="mt-5 text-sm leading-relaxed text-ivory-dim not-italic">
+          {site.address.street}<br />
+          {site.address.neighborhood}<br />
+          {site.address.city}, CP {site.address.zip}
+        </address>
+
+        <a
+          href={`tel:${site.phone}`}
+          class="mt-4 inline-block text-sm text-ivory-dim transition-colors duration-200 hover:text-gold"
+        >
+          {site.phoneDisplay}
+        </a>
+        <br />
+        <a
+          href={`mailto:${site.email}`}
+          class="mt-1 inline-block text-sm text-ivory-dim transition-colors duration-200 hover:text-gold"
+        >
+          {site.email}
+        </a>
+      </div>
+    </div>
+
+    <!-- Barra inferior -->
+    <div
+      class="mt-12 flex flex-col gap-4 border-t border-line/70 pt-7 text-xs text-muted sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p>© {year} {site.name}. Todos los derechos reservados.</p>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2">
+        <a href="/privacidad" class="transition-colors duration-200 hover:text-gold">
+          Política de privacidad
+        </a>
+        <span aria-hidden="true" class="hidden h-3 w-px bg-line sm:block"></span>
+        <p>Hecho con oficio en {site.address.city}</p>
+      </div>
+    </div>
+  </div>
+</footer>

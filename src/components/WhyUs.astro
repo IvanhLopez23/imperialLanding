@@ -1,0 +1,104 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import interiorImage from "../assets/interior.jpg";
+import toolsImage from "../assets/shave.jpg";
+import { highlights, site } from "../data/site";
+---
+
+<!--
+  Diferenciación: tres razones concretas + apoyo visual de la barbería.
+  Composición de dos imágenes en desktop; una sola en móvil para no saturar.
+-->
+<section id="nosotros" class="relative overflow-hidden bg-charcoal-soft py-20 sm:py-24 lg:py-32">
+  <!-- Halo decorativo -->
+  <div
+    class="pointer-events-none absolute -top-40 -left-40 h-96 w-96 rounded-full bg-gold/5 blur-3xl"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="mx-auto grid max-w-6xl items-center gap-14 px-4 sm:px-6 lg:grid-cols-2 lg:gap-20 lg:px-8">
+    <!-- Imágenes -->
+    <div class="relative">
+      <div class="relative overflow-hidden rounded-2xl border border-gold/20">
+        <Image
+          src={interiorImage}
+          alt="Interior de Barbería Imperial con sillones de cuero, espejos y pared de ladrillo"
+          widths={[480, 720, 960, 1200]}
+          sizes="(min-width: 1024px) 46vw, (min-width: 640px) 90vw, 100vw"
+          loading="lazy"
+          decoding="async"
+          quality={80}
+          class="aspect-[4/3] w-full object-cover transition-transform duration-700 ease-out hover:scale-[1.03]"
+        />
+      </div>
+
+      <!-- Imagen secundaria (solo desktop) -->
+      <div
+        class="absolute -right-6 -bottom-10 hidden w-44 overflow-hidden rounded-xl border border-gold/30 shadow-2xl shadow-black/60 lg:block"
+      >
+        <Image
+          src={toolsImage}
+          alt="Herramientas de barbería: tijeras, máquinas de corte y pomada sobre una base de pizarra"
+          widths={[200, 300, 400]}
+          sizes="176px"
+          loading="lazy"
+          decoding="async"
+          quality={80}
+          class="aspect-square w-full object-cover"
+        />
+      </div>
+
+      <p class="mt-5 text-xs tracking-[0.18em] text-muted uppercase lg:mt-6">
+        {site.address.street} · Desde 1998
+      </p>
+    </div>
+
+    <!-- Contenido -->
+    <div class="reveal">
+      <p class="section-label">Nosotros</p>
+
+      <h2 class="section-title mt-4">
+        Un oficio que no <em class="text-gold italic">se improvisa</em>
+      </h2>
+
+      <p class="mt-5 max-w-lg text-base leading-relaxed text-ivory-dim">
+        Tres generaciones detrás del sillón. Mantenemos la técnica de siempre y cuidamos cada
+        detalle: la navaja, el asiento, la conversación.
+      </p>
+
+      <ul class="mt-10 space-y-7">
+        {
+          highlights.map((item) => (
+            <li class="flex gap-5">
+              <span class="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-gold/30 bg-gold/5 text-gold">
+                <Icon name={item.icon} class="h-5 w-5" />
+              </span>
+              <div>
+                <h3 class="font-serif text-lg text-ivory">{item.title}</h3>
+                <p class="mt-1.5 text-sm leading-relaxed text-muted">{item.text}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+
+      <!-- Cifras -->
+      <dl class="mt-12 grid grid-cols-3 gap-4 border-t border-line pt-8">
+        <div>
+          <dt class="text-[10px] tracking-[0.18em] text-muted uppercase">Años</dt>
+          <dd class="mt-1 font-serif text-2xl text-gold">{site.years}</dd>
+        </div>
+        <div>
+          <dt class="text-[10px] tracking-[0.18em] text-muted uppercase">Cortes</dt>
+          <dd class="mt-1 font-serif text-2xl text-gold">12k+</dd>
+        </div>
+        <div>
+          <dt class="text-[10px] tracking-[0.18em] text-muted uppercase">Valoración</dt>
+          <dd class="mt-1 font-serif text-2xl text-gold">{site.rating.value}</dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</section>
