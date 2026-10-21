@@ -19,22 +19,22 @@ export interface NavItem {
 export const site = {
   name: "Barbería Imperial",
   shortName: "Imperial",
-  tagline: "Barber Club · Est. 1998",
+  tagline: "Barberia Tradicional · Est. 2020",
   description:
     "Barbería tradicional con cortes clásicos, afeitado a navaja y toalla caliente. Reserva tu cita en el centro de la ciudad.",
   url: "https://barberiaimperial.com",
 
   // Contacto
-  phoneDisplay: "+52 55 1234 5678",
-  phone: "+525512345678", // formato internacional sin espacios (tel: / WhatsApp)
-  whatsapp: "525512345678",
-  email: "hola@barberiaimperial.com",
+  phoneDisplay: "+52 81 3130 2695",
+  phone: "+528131302695", // formato internacional sin espacios (tel: / WhatsApp)
+  whatsapp: "528131302695",
+  email: "alex@barberiaimperial.com",
 
   // Dirección (se usa también para el enlace de Google Maps)
   address: {
-    street: "Calle Hidalgo 128",
-    neighborhood: "Centro Histórico",
-    city: "Ciudad de México",
+    street: "Republica Mexicana",
+    neighborhood: "Puentes",
+    city: "San Nicolas de los Garza",
     country: "México",
     zip: "06000",
   },
